@@ -1,1 +1,7 @@
-GET http://localhost:3001
+@baseUrl = http://localhost:3001
+
+GET {{baseUrl}}
+###
+
+POST {{baseUrl}}/auth/login
+
