@@ -3,5 +3,16 @@
 GET {{baseUrl}}
 ###
 
+### Auth login
+# @name authlogin
 POST {{baseUrl}}/auth/login
+Content-Type: application/json
 
+{
+  "email": "user@gmail.com",
+  "password": "@password123"
+}
+
+### Read one user
+# @name readOneUser
+GET {{baseUrl}}/user/abc
