@@ -5,6 +5,7 @@ import { UserModule } from '../user/user.module.js';
 import { CommomModule } from '../common/common.module.js';
 import { JwtModule } from '@nestjs/jwt';
 import type { SignOptions } from 'jsonwebtoken';
+import { JwtStrategy } from './jwt.strategy.js';
 
 @Module({
   imports: [
@@ -38,7 +39,7 @@ import type { SignOptions } from 'jsonwebtoken';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
   exports: [],
 })
 export class AuthModule {}
