@@ -17,3 +17,6 @@
    classe de DTO para criação de novo usuário)
 
 8. npx nest g res post (comando para gerar todos os recursos para o module post)
+
+9. npm i @nestjs/typeorm typeorm better-sqlite3 (comando para instalar a ORM no
+   nestJS e o driver do banco de dados sqlite3)
