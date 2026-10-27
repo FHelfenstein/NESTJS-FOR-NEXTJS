@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { User } from '../../user/entities/user.entity.js';
 
 @Entity()
 export class Post {
@@ -36,4 +38,6 @@ export class Post {
   updatedAt: Date;
 
   // Many to One <- authorId <- FK para User
+  @ManyToOne(() => User)
+  author: User;
 }
