@@ -9,7 +9,6 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { CustomParseIntPipe } from '../common/pipes/custom-parse-int-pipe.js';
 import { ConfigService } from '@nestjs/config';
 import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
