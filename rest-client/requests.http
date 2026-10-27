@@ -7,8 +7,8 @@
 @imagePath = {{uploadImage.response.body.url}}
 @imageUrl = {{baseUrl}}{{imagePath}}
 
-@userNameForTesting = Luiz
-@userEmailForTesting = luiz@email.com
+@userNameForTesting = Fernando
+@userEmailForTesting = fernando.helfenstein@gmail.com
 @userPasswordForTesting = 123456
 @userNewPasswordForTesting = 123456
 
