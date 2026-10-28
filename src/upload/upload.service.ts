@@ -29,7 +29,13 @@ export class UploadService {
     }
 
     const today = new Date().toISOString().split('T')[0];
-    const uploadPath = resolve(__dirname, '..', '..', 'uploads', today);
+    const uploadPath = resolve(
+      import.meta.dirname,
+      '..',
+      '..',
+      'uploads',
+      today,
+    );
 
     if (!existsSync(uploadPath)) {
       mkdirSync(uploadPath, { recursive: true });

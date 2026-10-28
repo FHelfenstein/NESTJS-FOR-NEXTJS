@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
-
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 import { UploadController } from './upload.controller.js';
 import { UploadService } from './upload.service.js';
@@ -9,11 +8,11 @@ import { UploadService } from './upload.service.js';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: resolve(__dirname, '..', '..', 'uploads'),
-      serveRoot: '/uploads', // define a URL base
+      rootPath: resolve(import.meta.dirname, '..', '..', 'uploads'),
+      serveRoot: '/uploads',
       serveStaticOptions: {
-        fallthrough: false, // não continua caso não encontre o arquivo
-        index: false, // impede tentativa de servir "index.html"
+        fallthrough: false,
+        index: false,
       },
     }),
   ],
