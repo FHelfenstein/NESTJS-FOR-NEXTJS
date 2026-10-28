@@ -7,7 +7,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UploadModule } from './upload/upload.module.js';
 import { AllExceptionsFilter } from './common/filters/all-exception.filter.js';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -21,8 +22,18 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     AuthModule,
     UserModule,
     PostModule,
+    UploadModule,
     ConfigModule.forRoot({
       isGlobal: true,
+    }),
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 10000,
+          limit: 10,
+          blockDuration: 5000,
+        },
+      ],
     }),
     TypeOrmModule.forRootAsync({
       useFactory: () => {
@@ -48,13 +59,16 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
         };
       },
     }),
-    UploadModule,
   ],
   controllers: [],
   providers: [
     {
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     },
   ],
   exports: [],
