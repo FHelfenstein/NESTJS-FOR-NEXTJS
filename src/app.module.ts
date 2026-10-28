@@ -5,6 +5,8 @@ import { UserModule } from './user/user.module.js';
 import { PostModule } from './post/post.module.js';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UploadModule } from './upload/upload.module.js';
+import { UploadModule } from './upload/upload.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -45,6 +47,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
         };
       },
     }),
+    UploadModule,
   ],
   controllers: [],
   providers: [],

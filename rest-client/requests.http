@@ -82,8 +82,8 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "title": "Último Título do post",
-  "excerpt": "Excerto do post",
+  "title": "FrontEnd - React + NestJS",
+  "excerpt": "Desenvolvendo aplicações modernas com React + NextJS",
   "content": "Conteúdo",
   "coverImageUrl": "http://localhost"
 }
@@ -113,9 +113,6 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "title": "NOVO - Título do post",
-  "excerpt": "NOVO - Excerto",
-  "content": "NOVO - Conteúdo",
   "published": true
 }
 
@@ -133,10 +130,10 @@ Authorization: Bearer {{jwtToken}}
 Content-Type: multipart/form-data; boundary=----BryenFormBoundary
 
 ------BryenFormBoundary
-Content-Disposition: form-data; name="file"; filename="exemplo.png"
+Content-Disposition: form-data; name="file"; filename="image.png"
 Content-Type: image/png
 
-< ../dev/images/sample-image.jpeg
+< ../dev/images/image.gif
 ------BryenFormBoundary--
 
 ### Read Image

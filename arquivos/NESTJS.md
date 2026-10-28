@@ -23,3 +23,6 @@
     nestJS e o driver do banco de dados sqlite3)
 
 10. npm i @nestjs/jwt (Instalação do pacote oficial do Jwt no nestjs)
+
+11. npx nest g mo upload (commando para gerar o módulo no nosso exemplo foi o
+    upload)
