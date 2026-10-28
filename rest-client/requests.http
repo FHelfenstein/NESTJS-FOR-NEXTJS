@@ -82,9 +82,10 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "title": "Título do post",
+  "title": "Último Título do post",
   "excerpt": "Excerto do post",
-  "content": "Conteúdo"
+  "content": "Conteúdo",
+  "coverImageUrl": "http://localhost"
 }
 
 ### Read all post public
