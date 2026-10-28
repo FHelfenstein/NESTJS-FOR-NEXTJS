@@ -6,6 +6,7 @@ import { PostModule } from './post/post.module.js';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UploadModule } from './upload/upload.module.js';
+import { AllExceptionsFilter } from './common/filters/all-exception.filter.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -49,7 +50,12 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     UploadModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: process.env.APP_FILTER as string,
+      useClass: AllExceptionsFilter,
+    },
+  ],
   exports: [],
 })
 export class AppModule {}
