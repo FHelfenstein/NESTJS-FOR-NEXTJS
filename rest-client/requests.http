@@ -47,7 +47,7 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "name": "{{userNameForTesting}}",
+  "name": "{{userNameForTesting}} Helfenstein",
   "email": "{{userEmailForTesting}}"
 }
 
