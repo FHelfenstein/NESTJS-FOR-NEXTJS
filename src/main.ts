@@ -1,10 +1,37 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule, ObserveInstrument } from './app.module.js';
 import { ValidationPipe } from '@nestjs/common';
+import helmet from 'helmet';
+import { parseCorsWhitelist } from './common/utils/parse-cors-whitelist.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     instrument: ObserveInstrument,
+  });
+
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: { policy: 'cross-origin' },
+    }),
+  );
+
+  const corsWhiteList = parseCorsWhitelist(process.env.CORS_WHITELIST ?? '');
+
+  app.enableCors({
+    origin: (
+      origin: string | undefined, // Isso é do navegador e para proteger o cliente
+      callback: (...args: any[]) => void,
+    ) => {
+      // Requisição sem origin ou que inclui uma origem conhecida
+      // por corsWhiteList é permitida
+      if (!origin || corsWhiteList.includes(origin)) {
+        return callback(null, true); // Permitido
+      }
+
+      // Requisições com origin mas que não conhecemos
+      // negamos.
+      return callback(new Error('Not allowed by CORS'), false);
+    },
   });
 
   app.useGlobalPipes(
@@ -14,6 +41,6 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(process.env.PORT ?? 3001);
+  await app.listen(process.env.APP_PORT ?? 3001);
 }
 await bootstrap();
